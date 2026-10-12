@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Code and results for: Multi-Site and Temporal Validation of Machine Learning Versus Logistic Regression for Coronary Risk Prediction With Five Common Predictors"
+type: software
+authors:
+  - family-names: "El Outouate"
+    given-names: "Lamiae"
+    email: "lamiae.eloutouate@uae.ac.ma"
+    affiliation: "FSTT, Abdelmalek Essaadi University, Tetouan, Morocco"
+version: "1.0.0"
+date-released: "2026-10-12"
+license: MIT
