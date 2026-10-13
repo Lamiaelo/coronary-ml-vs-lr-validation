@@ -1,28 +1,5 @@
 #!/usr/bin/env python3
-"""
-Multi-site and temporal external validation of ML models for cardiovascular risk prediction
-(v3: adds full-bootstrap non-inferiority, recalibration, decision-curve analysis, subgroup
-performance with calibration, clinical benchmarks and outcome-definition sensitivity analyses).
 
-Data (public)
-  UCI Heart Disease: processed.{cleveland,hungarian,switzerland,va}.data   (outcome: angiographic CAD, num>0)
-  Framingham teaching dataset: frmgham2.csv  (outcome: incident CHD within 10 years of an examination)
-
-Settings
-  A   leave-one-site-out within UCI (same outcome definition)                      [primary]
-  C   Framingham: develop on exam 1 (random half of participants), test on exam 3
-      (other half, about 12 years later; same outcome definition)                  [primary]
-  C0  same development half, tested on exam 1 of the other half (no temporal shift)
-  B1  UCI pooled -> Framingham exam 1; B2 Framingham exam 1 -> each UCI site       [stress tests: outcome differs]
-  C_S1/C_S2  setting C with composite outcome (CHD or death) / non-CHD deaths excluded
-
-Everything that is estimated (imputation, scaling, hyper-parameters, threshold, age cut-off,
-recalibration) uses development data only, except the explicit recalibration step, which is
-cross-fitted within the target data.
-
-Usage
-  python run_protocol_v3.py --uci_dir data/uci --framingham data/frmgham2.csv --seed 2026 --out results --stage all --B 1000 --Bfull 300
-"""
 import argparse, itertools, json, os, pickle, platform, sys, time, warnings, zlib
 import numpy as np
 import pandas as pd
